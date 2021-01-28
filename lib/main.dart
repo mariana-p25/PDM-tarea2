@@ -12,10 +12,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     Key key,
   }) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  bool isPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +55,16 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   //IconButton(icon: icon, onPressed: onPressed)
-                  Icon(Icons.thumb_up),
+                  IconButton(
+                    icon: Icon(
+                      Icons.thumb_up, 
+                      color: isPressed ? Colors.blue : Colors.grey,
+                    ), 
+                    onPressed: (){
+                      isPressed = !isPressed;
+                      setState(() {});
+                    },
+                  ),
                   Text("999"),
                   SizedBox(width: 8)
                 ]
