@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   bool dislike_isPressed = false;
   int counter = 0;
   var _scaffoldKey = GlobalKey<ScaffoldState>();
+  DateTime current = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -162,6 +163,50 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.all(24.0),
               child: Text("El ITESO, Universidad Jesuita de Guadalajara, es una universidad privada ubicada en la Zona Metropolitana de Guadalajara, Jalisco, México, fundada en el año 1957. La institución forma parte del Sistema Universitario Jesuita que integra a ocho universidades en México. Fundada en el año de 1957 por el ingeniero José Fernández del Valle y Ancira, entre otros, la universidad ha tenido una larga trayectoria. A continuación se presenta la historia de la institución en periodos de décadas."),
+            ),
+            Row(
+              children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.help),
+                      iconSize: 32,
+                      onPressed: () {
+                        if (counter % 2 == 0) {
+                          showDialog(
+                            context: context,
+                            builder: (_) => new AlertDialog(
+                              title: new Text("Likes pares"),
+                              content: new Text("El contador de likes es par"),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text('Cerrar'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            )
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (_) => new AlertDialog(
+                              title: new Text("Like impares"),
+                              content: new Text("$current"),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text('Cerrar'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            )
+                          );
+                        }
+                      },
+                    ),
+                    Text("Likes par/impar")
+                  ],
             ),
           ],
         ),
