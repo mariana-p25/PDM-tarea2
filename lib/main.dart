@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                       color: like_isPressed ? Colors.blue : Colors.grey,
                     ), 
                     onPressed: (){
-                      like_isPressed = true;
+                      like_isPressed = !like_isPressed;
                       dislike_isPressed = false;
                       counter++;
                       setState(() {});
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                       color: dislike_isPressed ? Colors.red : Colors.grey,
                     ), 
                     onPressed: (){
-                      dislike_isPressed = true;
+                      dislike_isPressed = !dislike_isPressed;
                       like_isPressed = false;
                       counter--;
                       setState(() {});
@@ -89,94 +89,71 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.mail,
-                            size: 64,
-                          ),
-                          onPressed: (){
-                            _scaffoldKey.currentState
-                            ..hideCurrentSnackBar()
-                            ..showSnackBar(
-                              SnackBar(
-                                content: Text("Mandando correo")
-                              ),
-                            );
-                          },
-                        ),
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.mail),
+                        iconSize: 64,
+                        onPressed: () {
+                          _scaffoldKey.currentState
+                          ..hideCurrentSnackBar()
+                          ..showSnackBar(
+                            SnackBar(
+                              content: Text("Enviar correo")
+                            ),
+                          );
+                        },
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("Correo"),
-                      ),
+                      Text("Correo")
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.call,
-                            size: 64,
-                          ),
-                          onPressed: (){
-                            _scaffoldKey.currentState
-                            ..hideCurrentSnackBar()
-                            ..showSnackBar(
-                              SnackBar(
-                                content: Text("Llamando")
-                              ),
-                            );
-                          },
-                        ),
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.call),
+                        iconSize: 64,
+                        onPressed: () {
+                          _scaffoldKey.currentState
+                          ..hideCurrentSnackBar()
+                          ..showSnackBar(
+                            SnackBar(
+                              content: Text("Hacer llamada")
+                            ),
+                          );
+                        },
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("Llamar"),
-                      ),
+                      Text("Llamar")
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.directions,
-                            size: 64,
-                          ),
-                          onPressed: (){
-                            _scaffoldKey.currentState
-                            ..hideCurrentSnackBar()
-                            ..showSnackBar(
-                              SnackBar(
-                                content: Text("Redirigiendo...")
-                              ),
-                            );
-                          },
-                        ),
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.directions),
+                        iconSize: 64,
+                        onPressed: () {
+                          _scaffoldKey.currentState
+                          ..hideCurrentSnackBar()
+                          ..showSnackBar(
+                            SnackBar(
+                              content: Text("Ir al ITESO")
+                            ),
+                          );
+                        },
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("Ruta"),
-                      ),
+                      Text("Ruta")
                     ],
                   ),
                 )
