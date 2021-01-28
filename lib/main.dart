@@ -26,10 +26,12 @@ class _HomePageState extends State<HomePage> {
   bool like_isPressed = false;
   bool dislike_isPressed = false;
   int counter = 0;
+  var _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Material App Bar'),
       ),
@@ -87,14 +89,36 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.mail, size: 64,),
-                      Text("Correo"),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.mail,
+                            size: 64,
+                          ),
+                          onPressed: (){
+                            _scaffoldKey.currentState
+                            ..hideCurrentSnackBar()
+                            ..showSnackBar(
+                              SnackBar(
+                                content: Text("Mandando correo")
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("Correo"),
+                      ),
                     ],
                   ),
                 ),
@@ -102,8 +126,28 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      Icon(Icons.call, size: 64,),
-                      Text("Llamar"),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.call,
+                            size: 64,
+                          ),
+                          onPressed: (){
+                            _scaffoldKey.currentState
+                            ..hideCurrentSnackBar()
+                            ..showSnackBar(
+                              SnackBar(
+                                content: Text("Llamando")
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("Llamar"),
+                      ),
                     ],
                   ),
                 ),
@@ -111,8 +155,28 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      Icon(Icons.directions, size: 64,),
-                      Text("Ruta"),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.directions,
+                            size: 64,
+                          ),
+                          onPressed: (){
+                            _scaffoldKey.currentState
+                            ..hideCurrentSnackBar()
+                            ..showSnackBar(
+                              SnackBar(
+                                content: Text("Redirigiendo...")
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("Ruta"),
+                      ),
                     ],
                   ),
                 )
