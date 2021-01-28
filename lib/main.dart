@@ -23,7 +23,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  bool isPressed = false;
+  bool like_isPressed = false;
+  bool dislike_isPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +59,26 @@ class _HomePageState extends State<HomePage> {
                   IconButton(
                     icon: Icon(
                       Icons.thumb_up, 
-                      color: isPressed ? Colors.blue : Colors.grey,
+                      color: like_isPressed ? Colors.blue : Colors.grey,
                     ), 
                     onPressed: (){
-                      isPressed = !isPressed;
+                      like_isPressed = !like_isPressed;
+                      dislike_isPressed = false;
                       setState(() {});
                     },
                   ),
                   Text("999"),
+                  IconButton(
+                    icon: Icon(
+                      Icons.thumb_down, 
+                      color: dislike_isPressed ? Colors.red : Colors.grey,
+                    ), 
+                    onPressed: (){
+                      dislike_isPressed = !dislike_isPressed;
+                      like_isPressed = false;
+                      setState(() {});
+                    },
+                  ),
                   SizedBox(width: 8)
                 ]
               ),
