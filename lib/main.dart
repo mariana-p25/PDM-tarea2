@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   bool like_isPressed = false;
   bool dislike_isPressed = false;
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -62,20 +63,22 @@ class _HomePageState extends State<HomePage> {
                       color: like_isPressed ? Colors.blue : Colors.grey,
                     ), 
                     onPressed: (){
-                      like_isPressed = !like_isPressed;
+                      like_isPressed = true;
                       dislike_isPressed = false;
+                      counter++;
                       setState(() {});
                     },
                   ),
-                  Text("999"),
+                  Text("$counter"),
                   IconButton(
                     icon: Icon(
                       Icons.thumb_down, 
                       color: dislike_isPressed ? Colors.red : Colors.grey,
                     ), 
                     onPressed: (){
-                      dislike_isPressed = !dislike_isPressed;
+                      dislike_isPressed = true;
                       like_isPressed = false;
+                      counter--;
                       setState(() {});
                     },
                   ),
